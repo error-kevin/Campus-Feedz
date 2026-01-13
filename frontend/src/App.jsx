@@ -2,7 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import { AuthProvider } from './context/AuthContext'
-import ProtectedRoute from './components/ProtectedRoute' // 👈 Ye import kiya
+import ProtectedRoute from './components/ProtectedRoute' 
+import EditProfile from './pages/profile/EditProfile'
 
 // Pages
 import Login from './pages/auth/Login'
@@ -43,6 +44,9 @@ function App() {
             <Route path="/profile" element={
               <ProtectedRoute><MyProfile /></ProtectedRoute>
             } />
+            <Route path="/edit-profile" element={
+  <ProtectedRoute><EditProfile /></ProtectedRoute>
+} />
 
           </Routes>
         </div>

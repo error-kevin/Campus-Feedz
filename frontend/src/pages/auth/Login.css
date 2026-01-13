@@ -1,0 +1,65 @@
+/* Pura Page Center karne ke liye */
+.login-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f6;
+}
+
+/* Card Design */
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-title {
+  color: #1f2937;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.login-subtitle {
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+/* Google Button Design */
+.google-btn {
+  background-color: #4285F4; /* Google Blue */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer; /* Haath ka nishaan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.google-btn:hover {
+  background-color: #357ae8; /* Darker Blue on Hover */
+}
+
+.google-icon {
+  background: white;
+  color: #4285F4;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

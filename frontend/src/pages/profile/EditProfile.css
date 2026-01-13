@@ -1,0 +1,85 @@
+/* Pura Page Center */
+.edit-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f9fafb;
+  min-height: 80vh;
+}
+
+/* Card Design */
+.edit-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 500px;
+}
+
+.edit-title {
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.edit-subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box; /* Input box se bahar na jaye */
+}
+
+.form-input:focus {
+  border-color: #2563EB;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.bio-input {
+  height: 100px;
+  resize: vertical;
+}
+
+/* Button */
+.save-btn {
+  width: 100%;
+  background-color: #2563EB;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #1d4ed8;
+}

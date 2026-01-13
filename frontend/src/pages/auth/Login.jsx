@@ -1,33 +1,37 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./Login.css"; // 👈 CSS file import ki
 
 const Login = () => {
-  const { login } = useAuth(); // Context se login function nikala
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
+      console.log("Google Login Button Clicked"); // Check karne ke liye
       await login();
-      navigate("/"); // Login hone ke baad Home page par bhej do
+      navigate("/"); // Login successful hone par Home par bhejo
     } catch (error) {
       console.error("Login Failed:", error);
-      alert("Login nahi ho paya! Console check karo.");
+      alert("Login Error: Console check karo");
     }
   };
 
   return (
-    <div className="container" style={{ textAlign: "center", marginTop: "100px" }}>
-      <h1>Welcome to CampusFeedz 🎓</h1>
-      <p>Apne college updates dekhne ke liye login karein.</p>
-      
-      <button 
-        onClick={handleLogin} 
-        className="btn" 
-        style={{ marginTop: "20px", fontSize: "1.2rem" }}
-      >
-        Sign in with Google 🚀
-      </button>
+    <div className="login-container">
+      <div className="login-card">
+        <h1 className="login-title">Welcome to CampusFeedz 🎓</h1>
+        <p className="login-subtitle">
+          Connect with your campus. Join the community today.
+        </p>
+        
+        {/* Asli Clickable Button */}
+        <button onClick={handleLogin} className="google-btn">
+          <span className="google-icon">G</span> 
+          Sign in with Google
+        </button>
+      </div>
     </div>
   );
 };
