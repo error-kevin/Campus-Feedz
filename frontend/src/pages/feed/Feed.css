@@ -1,0 +1,4 @@
+.feed-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+.feed-tabs button { padding: 10px 20px; border: none; background: #eee; cursor: pointer; border-radius: 20px; }
+.feed-tabs button.active { background: #2563EB; color: white; }
+.post-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 10px; background: white; }

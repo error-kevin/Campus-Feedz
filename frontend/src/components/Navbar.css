@@ -1,0 +1,79 @@
+/* Navbar Styling */
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Logo Styling */
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563EB;
+  text-decoration: none;
+}
+
+/* Links Section */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #2563EB;
+}
+
+/* Special Links */
+.highlight-link {
+  color: #2563EB;
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn-login {
+  background-color: #2563EB;
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-logout {
+  background-color: #EF4444;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.btn-logout:hover {
+  background-color: #dc2626;
+}

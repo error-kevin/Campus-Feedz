@@ -1,56 +1,49 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import '../styles/global.css' 
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import './Navbar.css'
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login');
+    } catch (error) {
+      console.error("Logout Failed", error);
+    }
+  }
+
   return (
-    <nav style={styles.nav}>
-      <div className="container" style={styles.container}>
-        {/* Logo */}
-        <Link to="/" style={styles.logo}>
+    <nav className="navbar">
+      <div className="container nav-container">
+        <Link to="/" className="nav-logo">
           CampusFeedz 🎓
         </Link>
 
-        {/* Links */}
-        <div style={styles.links}>
-          <Link to="/" style={styles.link}>Home</Link>
-          <Link to="/login" className="btn">Login</Link>
+        <div className="nav-links">
+          
+          {/* LOGIC: Agar User hai, tabhi Menu dikhao */}
+          {user ? (
+            <>
+              <Link to="/" className="nav-link">🏠 Home</Link>
+              <Link to="/qa" className="nav-link">💡 Q&A</Link>
+              <Link to="/resources" className="nav-link">📚 Notes</Link>
+              <Link to="/create" className="nav-link highlight-link">➕ Create</Link>
+              <Link to="/profile" className="nav-link">👤 Profile</Link>
+              <button onClick={handleLogout} className="btn-logout">Logout</button>
+            </>
+          ) : (
+            // Agar User nahi hai, to sirf Login button dikhao
+            <Link to="/login" className="btn btn-login">Login</Link>
+          )}
+          
         </div>
       </div>
     </nav>
   )
-}
-
-const styles = {
-  nav: {
-    backgroundColor: 'white',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    padding: '1rem 0',
-    position: 'sticky',
-    top: 0,
-    zIndex: 100
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  logo: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: '#2563EB',
-    textDecoration: 'none'
-  },
-  links: {
-    display: 'flex',
-    gap: '1.5rem',
-    alignItems: 'center'
-  },
-  link: {
-    textDecoration: 'none',
-    color: '#333',
-    fontWeight: '500'
-  }
 }
 
 export default Navbar

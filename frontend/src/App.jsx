@@ -1,21 +1,53 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Login from './pages/Login'
-// Home page abhi dummy rakhte hain
-const Home = () => <div className="container"><h1>🏠 Home Feed</h1></div>
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute' // 👈 Ye import kiya
+
+// Pages
+import Login from './pages/auth/Login'
+import MainFeed from './pages/feed/MainFeed'
+import QAHub from './pages/qa/QAHub'
+import NotesHub from './pages/resources/NotesHub'
+import CreatePost from './pages/post/CreatePost'
+import MyProfile from './pages/profile/MyProfile'
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <div style={{ marginTop: '20px' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <div className="main-content" style={{ maxWidth: '1200px', margin: '0 auto', paddingBottom: '50px' }}>
+          <Routes>
+            
+            {/* 🔓 PUBLIC ROUTE (Sabke liye khula hai) */}
+            <Route path="/login" element={<Login />} />
+
+            {/* 🔒 PRIVATE ROUTES (Bina login ke no entry) */}
+            <Route path="/" element={
+              <ProtectedRoute><MainFeed /></ProtectedRoute>
+            } />
+            
+            <Route path="/qa" element={
+              <ProtectedRoute><QAHub /></ProtectedRoute>
+            } />
+            
+            <Route path="/resources" element={
+              <ProtectedRoute><NotesHub /></ProtectedRoute>
+            } />
+            
+            <Route path="/create" element={
+              <ProtectedRoute><CreatePost /></ProtectedRoute>
+            } />
+            
+            <Route path="/profile" element={
+              <ProtectedRoute><MyProfile /></ProtectedRoute>
+            } />
+
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   )
 }
 

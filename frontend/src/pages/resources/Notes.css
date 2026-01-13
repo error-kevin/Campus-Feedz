@@ -1,0 +1,7 @@
+.notes-container { padding: 20px; }
+.notes-header { display: flex; justify-content: space-between; align-items: center; }
+.filters { display: flex; gap: 10px; margin: 20px 0; padding: 15px; background: #f0fdf4; border-radius: 8px; }
+.notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.note-card { border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; background: white; transition: 0.3s; }
+.note-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.verified-badge { color: green; font-size: 0.8rem; display: block; margin: 5px 0; }
