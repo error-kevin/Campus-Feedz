@@ -1,0 +1,14 @@
+/* src/styles/global.css */
+:root {
+  --primary: #2563EB;
+  --bg-color: #F8FAFC;
+  --text-main: #1E293B;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: sans-serif;
+}
