@@ -30,6 +30,25 @@ const Login = () => {
           <span className="google-icon">G</span> 
           Sign in with Google
         </button>
+
+        {/* Features Section */}
+        <div className="features-section">
+          <p className="features-title">What you'll get</p>
+          <div className="features-grid">
+            <div className="feature-box">
+              <span className="feature-icon">📚</span>
+              <p className="feature-text">Share Notes & Resources</p>
+            </div>
+            <div className="feature-box">
+              <span className="feature-icon">💡</span>
+              <p className="feature-text">Ask & Answer Questions</p>
+            </div>
+            <div className="feature-box">
+              <span className="feature-icon">🎯</span>
+              <p className="feature-text">Campus Updates</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

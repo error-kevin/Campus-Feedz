@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import { AuthProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute' 
@@ -12,14 +12,24 @@ import QAHub from './pages/qa/QAHub'
 import NotesHub from './pages/resources/NotesHub'
 import CreatePost from './pages/post/CreatePost'
 import MyProfile from './pages/profile/MyProfile'
-import UploadPost from './pages/upload/UploadPost' // 👈 YE IMPORT MISSING THA!
+import UploadPost from './pages/upload/UploadPost'
+
+// Conditional Navbar Component
+function ConditionalNavbar() {
+  const location = useLocation();
+  
+  if (location.pathname === '/login') {
+    return null;
+  }
+  
+  return <Navbar />;
+}
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
-        {/* Main content wrapper */}
+        <ConditionalNavbar />
         <div className="main-app-content">
           <Routes>
             
