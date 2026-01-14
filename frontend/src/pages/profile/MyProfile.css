@@ -1,0 +1,75 @@
+/* Layout Sync */
+.profile-scroll-box {
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.profile-banner {
+  height: 140px;
+  background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.profile-avatar-container {
+  position: absolute;
+  bottom: -50px;
+  left: 20px; /* Aligned to left like modern apps */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid white;
+  overflow: hidden;
+  background: white;
+}
+
+.profile-avatar-container img { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-details-main { padding: 0 20px; }
+.profile-details-main h1 { font-size: 1.8rem; font-weight: 850; margin: 0; letter-spacing: -1px; }
+.profile-details-main p { color: #718096; margin-top: 5px; font-weight: 500; }
+
+.profile-stats-grid {
+  display: flex;
+  gap: 30px;
+  margin: 25px 0;
+  padding: 15px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.p-stat strong { display: block; font-size: 1.2rem; }
+.p-stat span { font-size: 0.8rem; color: #a0aec0; text-transform: uppercase; font-weight: 700; }
+
+.badge-container-ui h4 { font-size: 0.9rem; margin-bottom: 15px; color: #2d3748; }
+.badges-flex { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge-item-ui {
+  background: #fdf2f2;
+  color: #c53030;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid #feb2b2;
+}
+
+.profile-tabs-ui {
+  display: flex;
+  margin-top: 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-tabs-ui button {
+  padding: 15px 30px;
+  border: none;
+  background: none;
+  font-weight: 700;
+  color: #a0aec0;
+  cursor: pointer;
+}
+
+.profile-tabs-ui button.active {
+  color: #3182ce;
+  border-bottom: 3px solid #3182ce;
+}

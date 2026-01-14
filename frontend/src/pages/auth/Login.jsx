@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"; // 👈 CSS file import ki
+import "./Login.css";
 
 const Login = () => {
   const { login } = useAuth();
@@ -9,9 +9,9 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      console.log("Google Login Button Clicked"); // Check karne ke liye
+      console.log("Google Login Button Clicked");
       await login();
-      navigate("/"); // Login successful hone par Home par bhejo
+      navigate("/");
     } catch (error) {
       console.error("Login Failed:", error);
       alert("Login Error: Console check karo");
@@ -26,7 +26,6 @@ const Login = () => {
           Connect with your campus. Join the community today.
         </p>
         
-        {/* Asli Clickable Button */}
         <button onClick={handleLogin} className="google-btn">
           <span className="google-icon">G</span> 
           Sign in with Google

@@ -12,19 +12,21 @@ import QAHub from './pages/qa/QAHub'
 import NotesHub from './pages/resources/NotesHub'
 import CreatePost from './pages/post/CreatePost'
 import MyProfile from './pages/profile/MyProfile'
+import UploadPost from './pages/upload/UploadPost' // 👈 YE IMPORT MISSING THA!
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Navbar />
-        <div className="main-content" style={{ maxWidth: '1200px', margin: '0 auto', paddingBottom: '50px' }}>
+        {/* Main content wrapper */}
+        <div className="main-app-content">
           <Routes>
             
-            {/* 🔓 PUBLIC ROUTE (Sabke liye khula hai) */}
+            {/* 🔓 PUBLIC ROUTE */}
             <Route path="/login" element={<Login />} />
 
-            {/* 🔒 PRIVATE ROUTES (Bina login ke no entry) */}
+            {/* 🔒 PRIVATE ROUTES */}
             <Route path="/" element={
               <ProtectedRoute><MainFeed /></ProtectedRoute>
             } />
@@ -44,9 +46,14 @@ function App() {
             <Route path="/profile" element={
               <ProtectedRoute><MyProfile /></ProtectedRoute>
             } />
+
             <Route path="/edit-profile" element={
-  <ProtectedRoute><EditProfile /></ProtectedRoute>
-} />
+              <ProtectedRoute><EditProfile /></ProtectedRoute>
+            } />
+
+            <Route path="/upload" element={
+              <ProtectedRoute><UploadPost /></ProtectedRoute>
+            } />
 
           </Routes>
         </div>

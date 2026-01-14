@@ -1,4 +1,65 @@
-.feed-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-.feed-tabs button { padding: 10px 20px; border: none; background: #eee; cursor: pointer; border-radius: 20px; }
-.feed-tabs button.active { background: #2563EB; color: white; }
-.post-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 10px; background: white; }
+.feed-layout-wrapper {
+  display: grid;
+  grid-template-columns: 260px 1fr 300px;
+  height: 100vh;
+  background-color: #ffffff;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sidebar-left, .sidebar-right {
+  padding: 30px;
+  border-right: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-brand { font-size: 1.6rem; font-weight: 900; margin-bottom: 40px; color: #3182ce; }
+
+.menu-item { padding: 12px; font-weight: 600; cursor: pointer; border-radius: 8px; margin-bottom: 10px; }
+.menu-item.active { background: #eef6ff; color: #3182ce; }
+
+.create-post-btn { background: #3182ce; color: white; padding: 15px; border-radius: 30px; border: none; font-weight: 700; cursor: pointer; margin-top: 20px; }
+
+.feed-center-column {
+  border-right: 1px solid #f0f0f0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-tabs-header {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 5;
+}
+
+.feed-tabs-header button { flex: 1; padding: 15px; border: none; background: none; font-weight: 700; color: #718096; cursor: pointer; }
+.feed-tabs-header button.active { color: #3182ce; border-bottom: 3px solid #3182ce; }
+
+.social-post-card { border-bottom: 10px solid #f8f9fa; padding: 20px 0; }
+.post-user-bar { display: flex; gap: 12px; padding: 0 20px 12px; align-items: center; }
+.post-user-bar img { width: 42px; height: 42px; border-radius: 50%; }
+.main-post-img { width: 100%; border-radius: 0; }
+.post-interaction-bar { padding: 12px 20px; font-weight: 700; letter-spacing: 5px; }
+.post-caption-text { padding: 0 20px; font-size: 0.95rem; }
+
+.campus-news-item, .lost-found-item { margin: 20px; padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; }
+.news-badge { background: #fee2e2; color: #ef4444; padding: 4px 8px; border-radius: 4px; font-weight: 800; font-size: 0.7rem; }
+
+@media (max-width: 1024px) {
+  .feed-layout-wrapper { grid-template-columns: 1fr; }
+  .sidebar-left, .sidebar-right { display: none; }
+}
+/* Scrollbar ko clean karne ke liye */
+.feed-scroll-container {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+.feed-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}

@@ -1,0 +1,91 @@
+.notes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Inter', sans-serif;
+}
+
+.notes-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.notes-header h1 { font-size: 2.2rem; font-weight: 850; margin-bottom: 10px; }
+
+.search-bar-ui input {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px 25px;
+  border-radius: 30px;
+  border: 1.5px solid #edf2f7;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 1rem;
+  outline: none;
+}
+
+.notes-main-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 280px;
+  gap: 30px;
+}
+
+.notes-filters button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.notes-filters button.active { background: #eef6ff; color: #3182ce; }
+
+.upload-notes-btn {
+  margin-top: 20px;
+  background: #3182ce !important;
+  color: white !important;
+  text-align: center !important;
+  padding: 15px !important;
+}
+
+/* Note Card */
+.note-card-ui {
+  background: white;
+  border: 1px solid #edf2f7;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.note-card-ui:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+.note-icon { font-size: 2.5rem; }
+
+.note-details h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
+.note-details p { color: #718096; font-size: 0.9rem; margin-bottom: 15px; }
+
+.note-footer { display: flex; justify-content: space-between; align-items: center; }
+.download-btn { background: #f7fafc; border: 1.5px solid #3182ce; color: #3182ce; padding: 6px 15px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+/* Leaderboard */
+.notes-leaderboard {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 16px;
+  height: fit-content;
+}
+
+.contributor-rank {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+}
+.contributor-rank span { display: block; font-weight: 700; }

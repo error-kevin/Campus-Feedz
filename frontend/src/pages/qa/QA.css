@@ -1,7 +1,0 @@
-.qa-layout { display: flex; gap: 20px; padding: 20px; }
-.qa-main { flex: 3; }
-.qa-sidebar { flex: 1; background: #f9f9f9; padding: 15px; border-radius: 10px; height: fit-content; }
-.qa-card { display: flex; gap: 15px; border: 1px solid #eee; padding: 15px; margin-top: 15px; background: white; border-radius: 8px; }
-.vote-section { display: flex; flex-direction: column; align-items: center; }
-.tag { background: #e0f2fe; color: #0284c7; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; margin-right: 5px; }
-.leaderboard li { list-style: none; padding: 8px 0; border-bottom: 1px solid #eee; }

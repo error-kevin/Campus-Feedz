@@ -12,3 +12,7 @@ body {
   color: var(--text-main);
   font-family: sans-serif;
 }
+.main-app-content {
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Background color for desktop view */
+}
