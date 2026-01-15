@@ -1,7 +1,110 @@
-.notes-container { padding: 20px; }
-.notes-header { display: flex; justify-content: space-between; align-items: center; }
-.filters { display: flex; gap: 10px; margin: 20px 0; padding: 15px; background: #f0fdf4; border-radius: 8px; }
-.notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-.note-card { border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; background: white; transition: 0.3s; }
-.note-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.verified-badge { color: green; font-size: 0.8rem; display: block; margin: 5px 0; }
+.notes-page {
+  padding: 20px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.notes-hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 40px;
+}
+
+.notes-hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.notes-hero p { opacity: 0.9; margin-bottom: 25px; }
+
+.search-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 15px 25px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+/* Grid Layout */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 0 10px;
+}
+
+/* Note Card Styling */
+.note-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.note-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.note-info h3 {
+  font-size: 1.2rem;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.uploader {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 15px;
+}
+
+.uploader span { color: #2563eb; font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.view-btn {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: auto;
+  transition: background 0.2s;
+}
+
+.view-btn:hover { background: #1d4ed8; }
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #6b7280;
+  padding: 50px;
+}

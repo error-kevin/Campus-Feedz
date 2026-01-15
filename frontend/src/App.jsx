@@ -1,58 +1,104 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import { AuthProvider } from './context/AuthContext'
-import ProtectedRoute from './components/ProtectedRoute' 
-import EditProfile from './pages/profile/EditProfile'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 
-// Pages
-import Login from './pages/auth/Login'
-import MainFeed from './pages/feed/MainFeed'
-import QAHub from './pages/qa/QAHub'
-import NotesHub from './pages/resources/NotesHub'
-import CreatePost from './pages/post/CreatePost'
-import MyProfile from './pages/profile/MyProfile'
+// Pages & Components
+import Login from "./pages/auth/Login";
+import Home from "./pages/feed/Home";
+import CreateHub from "./pages/post/CreateHub"; // Updated: Combined Create Page
+import QAHub from "./pages/qa/QAHub"; 
+import NotesHub from "./pages/resources/NotesHub"; // New: Resources Page
+import MyProfile from "./pages/profile/MyProfile"; 
+import EditProfile from "./pages/profile/EditProfile"; // New: Profile Editing
+import Navbar from "./components/Navbar";
+
+// Global Styles
+import './styles/global.css';
+
+/**
+ * ProtectedRoute Component
+ * Redirects to login if user is not authenticated
+ */
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" />;
+};
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Navbar />
-        <div className="main-content" style={{ maxWidth: '1200px', margin: '0 auto', paddingBottom: '50px' }}>
-          <Routes>
-            
-            {/* 🔓 PUBLIC ROUTE (Sabke liye khula hai) */}
-            <Route path="/login" element={<Login />} />
+    <Router>
+      <AuthProvider>
+        <div className="app-container">
+          <Navbar /> 
+          
+          <main className="content container">
+            <Routes>
+              {/* Public Route */}
+              <Route path="/login" element={<Login />} />
 
-            {/* 🔒 PRIVATE ROUTES (Bina login ke no entry) */}
-            <Route path="/" element={
-              <ProtectedRoute><MainFeed /></ProtectedRoute>
-            } />
-            
-            <Route path="/qa" element={
-              <ProtectedRoute><QAHub /></ProtectedRoute>
-            } />
-            
-            <Route path="/resources" element={
-              <ProtectedRoute><NotesHub /></ProtectedRoute>
-            } />
-            
-            <Route path="/create" element={
-              <ProtectedRoute><CreatePost /></ProtectedRoute>
-            } />
-            
-            <Route path="/profile" element={
-              <ProtectedRoute><MyProfile /></ProtectedRoute>
-            } />
-            <Route path="/edit-profile" element={
-  <ProtectedRoute><EditProfile /></ProtectedRoute>
-} />
+              {/* Private Campus Routes */}
+              <Route 
+                path="/" 
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/create" 
+                element={
+                  <ProtectedRoute>
+                    <CreateHub />
+                  </ProtectedRoute>
+                } 
+              />
 
-          </Routes>
+              <Route 
+                path="/qa" 
+                element={
+                  <ProtectedRoute>
+                    <QAHub />
+                  </ProtectedRoute>
+                } 
+              />
+
+              <Route 
+                path="/resources" 
+                element={
+                  <ProtectedRoute>
+                    <NotesHub />
+                  </ProtectedRoute>
+                } 
+              />
+
+              <Route 
+                path="/profile" 
+                element={
+                  <ProtectedRoute>
+                    <MyProfile />
+                  </ProtectedRoute>
+                } 
+              />
+
+              <Route 
+                path="/edit-profile" 
+                element={
+                  <ProtectedRoute>
+                    <EditProfile />
+                  </ProtectedRoute>
+                } 
+              />
+
+              {/* Catch-all Redirect */}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </main>
         </div>
-      </Router>
-    </AuthProvider>
-  )
+      </AuthProvider>
+    </Router>
+  );
 }
 
-export default App
+export default App;

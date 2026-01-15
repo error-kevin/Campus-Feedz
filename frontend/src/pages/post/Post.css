@@ -1,0 +1,90 @@
+/* src/pages/post/post.css */
+
+.upload-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+.upload-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #e5e7eb;
+}
+
+.upload-title {
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+}
+
+.upload-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.post-input, .post-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.post-input:focus, .post-textarea:focus {
+  border-color: #2563eb;
+}
+
+.post-textarea {
+  height: 120px;
+  resize: none;
+}
+
+.post-submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.post-submit-btn:hover {
+  background: #1d4ed8;
+}
+
+.post-submit-btn:active {
+  transform: scale(0.98);
+}
+
+.post-submit-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}

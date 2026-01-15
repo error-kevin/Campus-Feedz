@@ -1,100 +1,89 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
-import './EditProfile.css' // CSS file import ki
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../services/firebase';
+import './Profile.css';
 
 const EditProfile = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  // 1. Form ka data store karne ke liye state
   const [formData, setFormData] = useState({
-    branch: 'CSE',
-    year: '1st Year',
-    collegeId: '',
-    bio: ''
+    branch: user?.branch || 'CSE',
+    year: user?.year || '1st Year',
+    collegeId: user?.collegeId || '',
+    bio: user?.bio || ''
   });
 
-  // 2. Jab user kuch likhega to state update hogi
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
-
-  // 3. Save button dabane par kya hoga
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Page reload hone se rokega
-    console.log("Form Data Ready:", formData);
-    
-    // Abhi sirf dikhane ke liye alert
-    alert("Data Ready! Backend connect hote hi ye save ho jayega.\n" + JSON.stringify(formData));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, formData);
+      alert("Profile Sync Successful! ✅");
+      navigate("/profile");
+    } catch (err) {
+      console.error(err);
+      alert("Error updating profile.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="edit-container">
-      <div className="edit-card">
-        <h2 className="edit-title">📝 Complete Your Profile</h2>
-        <p className="edit-subtitle">Hi {user?.displayName}, please fill your academic details.</p>
+    <div className="profile-container">
+      <form onSubmit={handleSubmit} className="profile-card edit-mode">
+        <h2>📝 Update Profile</h2>
         
-        <form onSubmit={handleSubmit} className="edit-form">
-          
-          {/* Branch Selection */}
-          <div className="form-group">
-            <label>Branch</label>
-            <select name="branch" value={formData.branch} onChange={handleChange} className="form-input">
-              <option value="CSE">CSE (Computer Science)</option>
-              <option value="AIML">AIML (AI & Machine Learning)</option>
-              <option value="IT">IT (Information Tech)</option>
-              <option value="EC">EC (Electronics)</option>
-              <option value="ME">ME (Mechanical)</option>
-              <option value="CE">CE (Civil)</option>
-            </select>
-          </div>
+        <div className="form-group">
+          <label>Academic Branch</label>
+          <select value={formData.branch} onChange={(e) => setFormData({...formData, branch: e.target.value})}>
+            <option value="CSE">Computer Science (CSE)</option>
+            <option value="AIML">AI & Machine Learning</option>
+            <option value="IT">Information Tech</option>
+            <option value="EC">Electronics (EC)</option>
+          </select>
+        </div>
 
-          {/* Year Selection */}
-          <div className="form-group">
-            <label>Year</label>
-            <select name="year" value={formData.year} onChange={handleChange} className="form-input">
-              <option value="1st Year">1st Year</option>
-              <option value="2nd Year">2nd Year</option>
-              <option value="3rd Year">3rd Year</option>
-              <option value="4th Year">4th Year</option>
-            </select>
-          </div>
+        <div className="form-group">
+          <label>Current Year</label>
+          <select value={formData.year} onChange={(e) => setFormData({...formData, year: e.target.value})}>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </div>
 
-          {/* College ID */}
-          <div className="form-group">
-            <label>College ID (Enrollment No.)</label>
-            <input 
-              type="text" 
-              name="collegeId" 
-              placeholder="Ex: 0827CS211..." 
-              value={formData.collegeId}
-              onChange={handleChange}
-              className="form-input"
-              required 
-            />
-          </div>
+        <div className="form-group">
+          <label>Enrollment Number</label>
+          <input 
+            type="text" 
+            placeholder="Ex: 0827CS211045" 
+            value={formData.collegeId} 
+            onChange={(e) => setFormData({...formData, collegeId: e.target.value})}
+            required
+          />
+        </div>
 
-          {/* Bio */}
-          <div className="form-group">
-            <label>Short Bio</label>
-            <textarea 
-              name="bio" 
-              placeholder="Tell us about yourself..." 
-              value={formData.bio}
-              onChange={handleChange}
-              className="form-input bio-input"
-            />
-          </div>
+        <div className="form-group">
+          <label>Bio</label>
+          <textarea 
+            placeholder="Share your interests or tech stack..." 
+            value={formData.bio} 
+            onChange={(e) => setFormData({...formData, bio: e.target.value})}
+          />
+        </div>
 
-          {/* Submit Button */}
-          <button type="submit" className="save-btn">
-            💾 Save Profile
-          </button>
-        </form>
-      </div>
+        <button type="submit" className="save-btn" disabled={loading}>
+          {loading ? "Syncing..." : "Save Academic Details"}
+        </button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default EditProfile
+export default EditProfile;
